@@ -18,3 +18,16 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('register');
 });
+
+Route::get('/openGallery', function () {
+    return view('projectGallery');
+});
+
+Route::post('/insertUserData', 'CreatesController@add');
+
+
+Route::post('/check', 'CreatesController@signIn');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

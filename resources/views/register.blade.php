@@ -1,47 +1,56 @@
-@include('inc.header')
+<!-- @include('inc.header')
 
 <div class="container">
-<div class="row">
-    <div class="col-md-8">
+<div class="row" align="center">
       
         <div class="col-md-6">
-            <h2 class:"text-center">Sign Up</h2>
-            
-            <form method="POST" action="{{ url( '/insert') }}">
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="col-lg-2 control-label">Title</label>
-                    <div class="col-lg-10">
-                         <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
-                        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                    </div>
-                    
+            <h2 class:"text-center">Sign In</h2>
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="col-lg-2 control-label" align="left">Email</label>
+                <div align="left" style="padding: 10px">
+                    <input type="email" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
                 </div>
 
-                <div class="form-group">
-                    <label for="exampleInputPassword1" class="col-lg-2 control label">Description</label>
-
-                    <div class="col-lg-10">
-                        <textarea name="description" class="form-control" placeholder="Description"></textarea>
-                    </div>
+                <label for="exampleInputPassword1" control label" align="left" class="col-lg-2 control-label">Password</label>
+                <div align="left" style="padding: 10px">
+                   <input type="Password"  class="form-control" placeholder="Password"></input>
+                        
                 </div>
-               
-                <div class="col-lg-10">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                <div align="left" style="padding: 10px">
+                    <button type="submit" class="btn btn-primary">Sign In</button>
                     <a href="{{ url('/') }} " class="btn btn-primary">Back</a>
                 </div>
-            </form>
+            </div> 
+            
         </div>
+
         <div class="col-md-6">
-        <h2 class:"text-center">Log in</h2>
-            <p>some content with image</p>
+            <h2 class:"text-center">Sign Up</h2>
+            <div class="form-group">
+                <label align  >Full Name</label>
+                <div align="left" style="padding: 10px">
+                    <input type="name" name="name" class="form-control" id="inputname"  placeholder="Full Name">
+                        
+                </div>
+
+                <label  control label" align="left" class="col-lg-2 control-label" align="left">Email</label>
+                <div align="left" style="padding: 10px">
+                   <input type="email"  class="form-control" placeholder="Email"></input>
+                </div>
+
+                <div align="left" style="padding: 10px">
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                    <a href="{{ url('/') }} " class="btn btn-primary">Back</a>
+                </div>
+            </div> 
         </div>
-       
-    </div>
-    <div class="col-md-4">
-        <h2 class:"text-center">Sign Up with Facebook</h2>
-        some content plus image
-    </div>
+
+        
+            
+
+                
 </div>
 </div>
 
-@include('inc.footer')
+@include('inc.footer') -->

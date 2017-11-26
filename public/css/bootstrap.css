@@ -131,6 +131,7 @@ input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
 }
+
 button[disabled],
 html input[disabled] {
   cursor: default;
@@ -4275,7 +4276,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: left;
   height: 50px;
   padding: 15px 15px;
-  font-size: 18px;
+  font-size: 35px;
   line-height: 20px;
 }
 .navbar-brand:hover,
@@ -4956,6 +4957,7 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
+  background-image: url("/img/a.jpg");
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 30px;
@@ -4964,12 +4966,13 @@ a.badge:focus {
 }
 .jumbotron h1,
 .jumbotron .h1 {
-  color: inherit;
+  color: #ffffff;
 }
 .jumbotron p {
   margin-bottom: 15px;
   font-size: 21px;
   font-weight: 200;
+  color: #ffFFFF;
 }
 .jumbotron > hr {
   border-top-color: #d5d5d5;
