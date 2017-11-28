@@ -15,19 +15,20 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/register', function () {
-    return view('register');
-});
-
 Route::get('/openGallery', function () {
     return view('projectGallery');
 });
 
-Route::post('/insertUserData', 'CreatesController@add');
-
-
-Route::post('/check', 'CreatesController@signIn');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['middleware' => ['auth']], function() {
+    
+    Route::get('/createProject', function () {
+        return view('project.createForm');
+    });
+
+});

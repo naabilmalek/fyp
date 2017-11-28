@@ -61,7 +61,7 @@
                         <a href="{{ url('/openGallery') }}">Discover A Project</a>
                     </li>
                     <li>
-                        <a href="#">Create A Project</a>
+                        <a href="{{url('/createProject')}}">Create A Project</a>
                     </li>
                     <li>
                         <a href="#">How It Works</a>
