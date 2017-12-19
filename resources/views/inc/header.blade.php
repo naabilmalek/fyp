@@ -20,6 +20,7 @@
 
     <!-- Custom CSS -->
     <link href="{{url('css/3-col-portfolio.css')}}" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic,300italic,300" rel="stylesheet" type="text/css">
 
     <!-- jQuery -->
     <script type="text/js" src="{{url('js/jquery.js')}}"></script>
@@ -28,7 +29,31 @@
     <script type="text/js" src="{{url('js/bootstrap.min.js')}}"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <!-- scripts for datepicker -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+                    $( function() {
+                        $( "#end_date" ).datepicker();
+                    } );
+    </script>
+
+    <!-- scripts for comments -->
+
     
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11';
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -76,7 +101,8 @@
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
+                        <img src="/studgogo/public/upload/avatars/{{ Auth::user()->profile_image }}" style="width:32px; height:32px; position:absolute; top:10px; left:10px; border-radius:50%">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
@@ -91,6 +117,18 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
+
+                                <a href="{{ url('/userProfile') }}">
+                                    Profile
+                                </a>
+
+                                <a href="{{url('/editProfile/'.Auth::user()->id)}}"  >
+                                    Edit Profile
+                                </a>
+
+                                <a href="{{ url('/createdProject') }}">
+                                    Created Project
+                                </a>
                             </li>
                         </ul>
                     </li>

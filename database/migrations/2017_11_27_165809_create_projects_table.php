@@ -15,7 +15,18 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image');
+            $table->string('project_image')->nullable();          
+            $table->string('project_name')->nullable();
+            $table->string('project_URL')->nullable();
+            $table->string('website_URL')->nullable();
+            $table->string('project_desc')->nullable();
+            $table->date('funding_end_date')->nullable();
+            $table->string('fund_goal')->nullable();
+            $table->string('video_URL')->nullable();
+            $table->string('project_story')->nullable();
+           
+
+            
             $table->timestamps();
         });
     }

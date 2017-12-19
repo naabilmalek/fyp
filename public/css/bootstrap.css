@@ -93,7 +93,7 @@ figure {
   margin: 1em 40px;
 }
 hr {
-  height: 0;
+  height: 1px;
   -webkit-box-sizing: content-box;
      -moz-box-sizing: content-box;
           box-sizing: content-box;
@@ -1288,6 +1288,7 @@ h6,
   font-size: 12px;
 }
 p {
+ 
   margin: 0 0 10px;
 }
 .lead {
