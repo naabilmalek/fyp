@@ -11,13 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'ProjectsController@indexH');
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', 'ProjectsController@indexH');
 
 Route::get('/openGallery', function () {
     return view('projectGallery');

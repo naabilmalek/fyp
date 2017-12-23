@@ -25,9 +25,12 @@ class ProjectsController extends Controller
     	return view('user.createdProject')->with('projects',$user->projects);
     }
     
-     public function index()
-    {
-        return 123;
+     public function indexH(){
+
+        $projects=Project::all();
+
+        return view('home')->with('projects', $projects);
+        
     }
 
     /**
@@ -178,7 +181,7 @@ class ProjectsController extends Controller
         if($request->hasFile('imgupload')){
     		$projectavatar = $request->file('imgupload');
             $filename = time() . '.' . $projectavatar->getClientOriginalExtension();
-            Image::make($projectavatar)->resize(700, 300)->save( public_path('/upload/projectImage/' . $filename ) );
+            Image::make($projectavatar)->resize(700, 400)->save( public_path('/upload/projectImage/' . $filename ) );
             
             $date=date_create($request->input('end_date'));
             $date_format=date_format($date,"Y/m/d");

@@ -24,8 +24,27 @@
         <!-- /.row -->
 
         <!-- Projects Row -->
+        @foreach($projects as $project)
         <div class="row">
-            <div class="col-md-4 portfolio-item">
+        
+        
+           
+
+            
+             <div class="col-md-4" >
+                
+                <a href="#">
+                        <img class=" img-responsive" src="/studgogo/public/upload/projectImage/{{ $project->project_image }}" >
+                    </a>
+                    <h3>
+                        <a href="#">Project Name</a>
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                
+            </div>   
+
+            
+            <!-- <div class="col-md-4 portfolio-item">
                 <a href="#">
                     <img class="img-responsive" src="/img/10.jpg" alt="">
                 </a>
@@ -42,16 +61,9 @@
                     <a href="#">Project Name</a>
                 </h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="/img/10.jpg" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
+            </div> -->
+
+            @endforeach
         </div>
         <!-- /.row -->
 
