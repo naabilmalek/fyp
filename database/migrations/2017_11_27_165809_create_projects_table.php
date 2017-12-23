@@ -24,6 +24,8 @@ class CreateProjectsTable extends Migration
             $table->string('fund_goal')->nullable();
             $table->string('video_URL')->nullable();
             $table->string('project_story')->nullable();
+            $table->integer('user_id')->nullable();
+            
            
 
             

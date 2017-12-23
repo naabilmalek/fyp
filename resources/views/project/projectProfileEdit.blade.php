@@ -37,7 +37,7 @@
             <div class="form-group ">
 		        <label for="ic_passport" class="control-label col-lg-3" style="padding-left:50px"><br>IC or Passport Number*</label>			
 		        <div class="col-lg-9"  style="padding:25px"  >
-                    <input class="control-label col-lg-9" id="ic_passport" type="text" class="form-control" name="ic_passport">     
+                    <input class="control-label col-lg-9" id="ic_passport" type="text" class="form-control" name="ic_passport" value="<?php echo $users->ic_passport ?>">     
                 </div>
                 @if ($errors->has('ic_passport'))
                                     <span class="help-block">
@@ -57,7 +57,7 @@
                 <div class="form-group ">
                     <label for="author_email" class="control-label col-lg-3" style="padding-left:50px"><br>Matric No*</label>			
                     <div class="col-lg-9"  style="padding:18px"  >
-                        <input class="control-label col-lg-9" id="matric_no" type="text" class="form-control" name="matric_no">     
+                        <input class="control-label col-lg-9" id="matric_no" type="text" class="form-control" name="matric_no" value="<?php echo $users->matric_no ?>">     
                     </div>
                     @if ($errors->has('matric_no'))
                                     <span class="help-block">
@@ -82,7 +82,7 @@
                 <div class="form-group ">
                     <label for="bank_name" class="control-label col-lg-3" style="padding-left:50px"><br>Bank Name*</label>			
                     <div class="col-lg-9"  style="padding:18px"  >
-                        <input class="control-label col-lg-9" id="bank_name" type="text" class="form-control" name="bank_name">     
+                        <input class="control-label col-lg-9" id="bank_name" type="text" class="form-control" name="bank_name" value="<?php echo $users->bank_name ?>">     
                     </div>
                     @if ($errors->has('bank_name'))
                                     <span class="help-block">
@@ -100,7 +100,7 @@
                 <div class="form-group ">
                     <label for="bank_accHolder" class="control-label col-lg-3" style="padding-bottom:20px" ><br>Bank Account Name*</label>			
                     <div class="col-lg-9"  style="padding:18px"  >
-                        <input class="control-label col-lg-9" id="bank_accHolder" type="text" class="form-control" name="bank_accHolder">     
+                        <input class="control-label col-lg-9" id="bank_accHolder" type="text" class="form-control" name="bank_accHolder"  value="<?php echo $users->bank_acc_holder ?>" >     
                     </div>
 
                     @if ($errors->has('bank_accHolder'))
@@ -119,7 +119,7 @@
                 <div class="form-group ">
                     <label for="bank_accNum" class="control-label col-lg-3" style="padding-bottom:20px" ><br>Bank Account Number*</label>			
                     <div class="col-lg-9"  style="padding:18px"  >
-                        <input class="control-label col-lg-9" id="bank_accNum" type="text" class="form-control" name="bank_accNum">     
+                        <input class="control-label col-lg-9" id="bank_accNum" type="text" class="form-control" name="bank_accNum" value="<?php echo $users->acc_num ?>">     
                     </div>
 
                     @if ($errors->has('bank_accNum'))

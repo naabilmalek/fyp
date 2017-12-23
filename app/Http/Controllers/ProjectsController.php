@@ -6,15 +6,26 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Image;
 use App\Project;
+use App\User;
+use Auth;
+
 
 class ProjectsController extends Controller
 {
+  
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function display(){
+        $user_id= auth()->user()->id;
+        $user=User::find($user_id);
+    	return view('user.createdProject')->with('projects',$user->projects);
+    }
+    
+     public function index()
     {
         return 123;
     }
@@ -46,27 +57,14 @@ class ProjectsController extends Controller
             'project_URL'=>'required',
             'project_description'=>'required',
             'end_date'=>'required',
-            'fund_goal'=>'required'
+            'fund_goal'=>'required',
+            'story'=>'required',
         ]);
         
         $request->hasFile('imgupload');
         $projectavatar = $request->file('imgupload');
         $filename = time() . '.' . $projectavatar->getClientOriginalExtension();
-        Image::make($projectavatar)->resize(300, 300)->save( public_path('/upload/projectImage/' . $filename ) );
-
-        // $data = array(
-            
-        //                     'profile_image'=> $filename,
-        //                     'project_name'=> $request -> input('project_name'),
-        //                     'project_URL'=> $request -> input('project_URL'),
-        //                     'website_URL'=> $request -> input('web_URL'),
-        //                     'project_desc'=> $request -> input('project_description'),
-        //                     'funding_end_date'=> $request -> input('end_date'),
-        //                     'fund_goal'=> $request -> input('fund_goal')
-        // );
-
-        // return User::create(&data)->save();
-        // return 123;
+        Image::make($projectavatar)->resize(700, 300)->save( public_path('/upload/projectImage/' . $filename ) );
 
         $date=date_create($request->input('end_date'));
         $date_format=date_format($date,"Y/m/d");
@@ -78,11 +76,49 @@ class ProjectsController extends Controller
     	$project -> website_URL = $request -> input('web_URL');
     	$project -> project_desc = $request -> input('project_description');
     	$project -> funding_end_date = $date_format;
-        $project -> fund_goal = $request -> input('fund_goal');        
-    	$project -> save();
+        $project -> fund_goal = $request -> input('fund_goal');  
+        $project -> video_URL = $request -> input('video_URL'); 
+        $project -> project_story = $request -> input('story');
+        $project -> user_id = auth()->user()->id;
         
-        return redirect('/projectBackground')-> with ('info', 'Articale Saved Successfully!');
+        $project -> save();
+        
+        
+        return redirect('/projectProfile');
 
+
+    }
+
+    public function store2(Request $request){
+        $user_id= auth()->user()->id;
+        $user=User::find($user_id);
+        
+        $request->validate([
+            
+            'ic_passport'=>'required',
+            'matric_no'=>'required',
+            'bank_name'=>'required',
+            'bank_accHolder'=>'required',
+            'bank_accNum'=>'required',
+        ]);
+
+            $data = array(
+                
+                           
+                            'ic_passport'=> $request -> input('ic_passport'),
+                            
+                            'matric_no'=>$request ->input('matric_no'),
+                            'bank_name'=> $request -> input('bank_name'),
+                            'bank_acc_holder'=> $request -> input('bank_accHolder'),
+                            'acc_num'=> $request -> input('bank_accNum')
+            );  
+        
+           
+        User:: where('id',$user_id) -> update($data);
+
+        
+        
+        return redirect('/createdProject')->with('info',"Project Update Successfully");
 
     }
 
@@ -106,8 +142,22 @@ class ProjectsController extends Controller
     public function edit($id)
     {
         //
+
+        $project = Project::find($id);
+        
+        return view('project.projectPreview',['projects' => $project]);
+        
     }
 
+    public function preview($id)
+    {
+        //
+
+        $users = User::find($id);
+        
+        return view('user.editProfile',['users' => $users]);
+        
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -115,9 +165,68 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateProject($id)
     {
-        //
+         $project = Project::find($id);
+        
+        return view('project.projectBackgroundEdit',['projects' => $project]);
+    }
+
+    public function editPB(Request $request, $id){
+        $project= Project::find($id);
+        
+        if($request->hasFile('imgupload')){
+    		$projectavatar = $request->file('imgupload');
+            $filename = time() . '.' . $projectavatar->getClientOriginalExtension();
+            Image::make($projectavatar)->resize(700, 300)->save( public_path('/upload/projectImage/' . $filename ) );
+            
+            $date=date_create($request->input('end_date'));
+            $date_format=date_format($date,"Y/m/d");
+
+
+            $data = array(
+                
+                'project_image'=> $filename,
+                'project_name' => $request -> input('project_name'),
+                'project_URL' => $request -> input('project_URL'),
+                'website_URL' => $request -> input('web_URL'),
+                'project_desc' => $request -> input('project_description'),
+                'funding_end_date' => $date_format,
+                'fund_goal' => $request -> input('fund_goal'),  
+                'video_URL' => $request -> input('video_URL'), 
+                'project_story' => $request -> input('story'),
+                'user_id' => auth()->user()->id,
+            );  
+        }
+
+        else{
+                $date=date_create($request->input('end_date'));
+                $date_format=date_format($date,"Y/m/d");
+                $data = array(
+
+                    'project_name' => $request -> input('project_name'),
+                    'project_URL' => $request -> input('project_URL'),
+                    'website_URL' => $request -> input('web_URL'),
+                    'project_desc' => $request -> input('project_description'),
+                    'funding_end_date' => $date_format,
+                    'fund_goal' => $request -> input('fund_goal'),  
+                    'video_URL' => $request -> input('video_URL'), 
+                    'project_story' => $request -> input('story'),
+                    'user_id' => auth()->user()->id,
+            );
+        }
+        Project:: where('id',$id) -> update($data);
+
+        return redirect('/projectProfileEdit');
+
+    }
+
+    public function updateProjectP()
+    {
+        $user_id= auth()->user()->id;
+        $user=User::find($user_id);
+        
+        return view('project.projectProfileEdit',['users' => $user]);
     }
 
     /**

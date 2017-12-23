@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth']], function() {
         return view('project.projectBackground');
     });
 
+    Route::get('/createdProject', 'ProjectsController@display');
    
 
 });
@@ -45,25 +46,19 @@ Route::get('/projectBackground', function () {
     return view('project.projectBackground');
 });
 
-Route::get('/projectStory', function () {
-    return view('project.projectStory');
-});
+
 
 Route::get('/projectProfile', function () {
     return view('project.projectProfile');
 });
 
-Route::get('/projectAccount', function () {
-    return view('project.projectAccount');
-});
+
 
 Route::get('/projectView', function () {
-    return view('project.projectView');
+    return view('project.projectPreview');
 });
 
-Route::get('/createdProject', function () {
-    return view('user.createdProject');
-});
+
 
 // user Page route
 
@@ -82,10 +77,21 @@ Route::get('/userProfile', function () {
 
 //profile masa create
 Route::post('/addProjectBackground','ProjectsController@store1');
+Route::post('/addProjectCreator','ProjectsController@store2');
+
+Route::get('/editProfile/{id}', 'ProjectsController@preview');
 
  //user profile 
  Route::get('/userProfile', 'UsersController@home');
  Route::get('/editProfile/{id}', 'UsersController@update');
  Route::post('/edit/{id}', 'UsersController@edit');
+
+ //edit project
+
+ Route::get('/editProfile/{id}', 'ProjectsController@updateProject');
+ Route::post('/editProjectBackground/{id}', 'ProjectsController@editPB');
+ Route::post('/editProjectProfile','ProjectsController@editPP');
+ Route::get('/projectProfileEdit', 'ProjectsController@updateProjectP');
+ 
 
 

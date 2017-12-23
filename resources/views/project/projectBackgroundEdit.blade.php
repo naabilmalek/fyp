@@ -27,7 +27,7 @@
 </div>
 
 
-<form enctype="multipart/form-data" method="POST" action="{{ url('/addProjectBackground') }}" >
+<form enctype="multipart/form-data" method="POST" action="{{ url('/editProjectBackground/'.$projects->id) }}" >
 {{csrf_field()}}
 <div class="container"  align="center">
     <div class="col-md-2"></div>
@@ -74,7 +74,7 @@
         <div class="form-group{{ $errors->has('project_name') ? ' has-error' : '' }}">
 		    <label for="project_name" class="control-label col-lg-3" style="padding-left:50px"><br>Project Name*</label>			
 		    <div class="col-lg-9"  style="padding:18px"  >
-                <input class="control-label col-lg-9" id="project_name" type="text" class="form-control" name="project_name">     
+                <input class="control-label col-lg-9" id="project_name" type="text" class="form-control" name="project_name" value="<?php echo $projects->project_name ?>">     
                 @if ($errors->has('project_name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('project_name') }}</strong>
@@ -99,7 +99,8 @@
 		    <div class="col-lg-9"  style="padding:10px"  >
                 <div class="controls input-group" style="padding:5px">
 			        <span class="input-group-addon">https://www.studgogo.com/projects/</span>
-				    <input style="padding:5px" class="control-label col-lg-6" id="project_URL" class="form-control required" maxlength="60" name="project_URL" type="text">
+				    <input style="padding:5px" class="control-label col-lg-6" id="project_URL" class="form-control required" maxlength="60" name="project_URL" type="text"
+                    value="<?php echo $projects->project_URL ?>">
                     @if ($errors->has('project_URL'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('project_URL') }}</strong>
@@ -123,7 +124,7 @@
         <div class="form-group{{ $errors->has('web_URL') ? ' has-error' : '' }}">
             <label for="website_URL" class="control-label col-lg-3" style="padding-left:50px"><br>Website URL</label>			
                 <div class="col-lg-9"  style="padding:18px"  >
-                    <input class="control-label col-lg-9" id="web_URL" type="text" class="form-control" name="web_URL" >     
+                    <input class="control-label col-lg-9" id="web_URL" type="text" class="form-control" name="web_URL" value="<?php echo $projects->website_URL ?>">     
                     @if ($errors->has('web_URL'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('web_URL') }}</strong>
@@ -146,7 +147,8 @@
         <div class="form-group{{ $errors->has('project_description') ? ' has-error' : '' }}">
 		    <label for="project_desc" class="control-label col-lg-3" ><br>Project Description*</label>			
 		    <div class="col-lg-9"  style="padding:18px"  >
-                <textarea class="control-label col-lg-9" id="project_description" type="text" class="form-control" name="project_description"  cols="50" rows="10">     
+                <textarea class="control-label col-lg-9" id="project_description" type="text" class="form-control" name="project_description"  cols="50" rows="10"
+                value="<?php echo $projects->project_desc ?>" >     
                 </textarea>
                 @if ($errors->has('project_description'))
                                     <span class="help-block">
@@ -171,7 +173,8 @@
             
 		    <label for="end_date" class="control-label col-lg-3" ><br>Funding End Date</label>			
 		    <div class="col-lg-9"  style="padding:18px"  > 
-                <input class="control-label col-lg-6" id="end_date" type="text" class="form-control" name="end_date" readonly="readonly" >
+                <input class="control-label col-lg-6" id="end_date" type="text" class="form-control" name="end_date" readonly="readonly" 
+                value="<?php echo $projects->funding_end_date?>" >
                 @if ($errors->has('end_date'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('end_date') }}</strong>
@@ -200,7 +203,7 @@
 		    <div class="col-lg-9"  style="padding:18px"  >
                 <div class="controls input-group" style="padding:5px">    
                     <span class="input-group-addon">RM</span> 
-                    <input class="control-label col-lg-9" id="fund_goal" type="text" class="form-control" name="fund_goal"> 
+                    <input class="control-label col-lg-9" id="fund_goal" type="text" class="form-control" name="fund_goal" value="<?php echo $projects->fund_goal ?>"> 
                     
                 </div>
                 @if ($errors->has('fund_goal'))
@@ -225,7 +228,7 @@
         <div class="form-group ">
 		    <label for="video_URL" class="control-label col-lg-3" style="padding-left:50px"><br>Video URL</label>			
 		    <div class="col-lg-9"  style="padding:18px"  >
-                <input class="control-label col-lg-9" id="video_URL" type="text" class="form-control" name="video_URL">     
+                <input class="control-label col-lg-9" id="video_URL" type="text" class="form-control" name="video_URL" value="<?php echo $projects->video_URL ?>">     
             </div>
             <div class="col-md-3"></div>
 		    <div class="col-md-6" align="left">
@@ -244,7 +247,8 @@
         <div class="form-group ">
             <label for="story" class="control-label col-lg-3"><br>Project Background Story*</label>			
                 <div class="col-lg-9"  style="padding:18px"  >
-                    <textarea class="control-label col-lg-9" id="story" type="text" class="form-control" name="story" cols="50" rows="10">     
+                    <textarea class="control-label col-lg-9" id="story" type="text" class="form-control" name="story" cols="50" rows="10"
+                    value="<?php echo $projects->project_story ?>">     
                     </textarea>
                 </div>
 
