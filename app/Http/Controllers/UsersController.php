@@ -11,8 +11,9 @@ class UsersController extends Controller
 {
     //
     public function home(){
-    	$users = User::all();
-    	return view('user.userProfile',['users' => $users]);
+        $id=Auth::user()->id;
+    	$users = User::find($id);
+    	return view('user.userProfile',['user' => $users]);
     }
 
     public function update($id){

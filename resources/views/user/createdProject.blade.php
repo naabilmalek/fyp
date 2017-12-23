@@ -47,13 +47,17 @@
                     <td>
                         <div class="table_action list-group">
                             <div>
-                                <a href='{{url("/editProfile/{$project->id}")}}'>
+                                <a href='{{url("/editProject/{$project->id}")}}'>
                                 <span class="glyphicon glyphicon-edit"></span> Edit</a>
                             </div>
                             <div>           
                                 <a href="">
                                 <span class="glyphicon glyphicon-list"></span> Updates</a>
                             </div> 
+                            <div>    
+                                <a href='{{url("/projectView/{$project->id}")}}' target="_blank">
+                                <span class="glyphicon glyphicon-edit"></span>View Post</a>
+                            </div>
                             <div>    
                                 <a href="" target="_blank">
                                 <span class="glyphicon glyphicon-edit"></span> Download supporters list</a>

@@ -15,16 +15,21 @@ Route::get('/', 'ProjectsController@indexH');
 
 Route::get('/home', 'ProjectsController@indexH');
 
+Route::get('/laravel', function () {
+    return redirect()->to('http://127.0.0.1:8080/gg/public/');
+});
+
+
 Route::get('/openGallery', function () {
     return view('projectGallery');
 });
 
+Route::get('/index', function () {
+    return view('index');
+});
 
 
 Auth::routes();
-
-
-
 
 Route::group(['middleware' => ['auth']], function() {
     
@@ -49,10 +54,8 @@ Route::get('/projectProfile', function () {
 });
 
 
-
-Route::get('/projectView', function () {
-    return view('project.projectPreview');
-});
+//project page view after created
+Route::get('/projectView/{id}','ProjectsController@preview' );
 
 
 
@@ -71,20 +74,20 @@ Route::get('/userProfile', function () {
 // Route::get('/getcommentpage','CommentController@showPage');
 // Route::post('/postcomment','CommentController@storeComment');
 
-//profile masa create
+//create project. ntuk page 1 dan 2 (form)
 Route::post('/addProjectBackground','ProjectsController@store1');
 Route::post('/addProjectCreator','ProjectsController@store2');
 
-Route::get('/editProfile/{id}', 'ProjectsController@preview');
+//preview ntuk user bile dh siap create or edit
+// Route::get('/editProfile/{id}', 'ProjectsController@preview');
 
  //user profile 
  Route::get('/userProfile', 'UsersController@home');
  Route::get('/editProfile/{id}', 'UsersController@update');
  Route::post('/edit/{id}', 'UsersController@edit');
 
- //edit project
-
- Route::get('/editProfile/{id}', 'ProjectsController@updateProject');
+ //edit project yg dah create
+ Route::get('/editProject/{id}', 'ProjectsController@updateProject');
  Route::post('/editProjectBackground/{id}', 'ProjectsController@editPB');
  Route::post('/editProjectProfile','ProjectsController@editPP');
  Route::get('/projectProfileEdit', 'ProjectsController@updateProjectP');

@@ -2,7 +2,7 @@
 
 
 <div class=" container" align="center"  >
-    <div class="col-md-3 ">  </div> 
+    <div class="col-md-4 ">  </div> 
         <div class="col-md-2 ">
             <a href="{{ url('/projectBackground') }}" class="btn btn-default btn-block btn-create btn-create-active btn btn-primary ">
             <span class="glyphicon   glyphicon-ok-sign "></span> Basic</a>
@@ -14,11 +14,8 @@
         </div>
 
         
-        <div class="col-md-2">
-            <a href="#" class="btn btn-default btn-block btn-create btn-create-active btn btn-success">
-            </span> Preview</a>
-        </div>
-    <div class="col-md-3 ">  </div> 
+        
+    <div class="col-md-4 ">  </div> 
 
 </div> 
 

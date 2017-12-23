@@ -38,9 +38,11 @@ class ProjectsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function preview($id){
+        $projects=Project::find($id);
+        
+
+    	return view('project.projectPreview')->with('projects',$projects);
     }
 
     /**
@@ -146,21 +148,11 @@ class ProjectsController extends Controller
     {
         //
 
-        $project = Project::find($id);
         
-        return view('project.projectPreview',['projects' => $project]);
         
     }
 
-    public function preview($id)
-    {
-        //
-
-        $users = User::find($id);
-        
-        return view('user.editProfile',['users' => $users]);
-        
-    }
+   
     /**
      * Update the specified resource in storage.
      *

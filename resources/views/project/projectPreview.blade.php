@@ -1,14 +1,15 @@
 
 @include('inc.header')
 
+
 <div>
-        <h1 align="center" ><br>Project Name</h1>
+        <h1 align="center" ><br>{{$projects->project_name}}</h1>
 </div><br>
 
 <div class="container" style="background-color:LightGray;">
     <div class="col-md-8" style="padding:20px">
         <a href="#">
-            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+            <img class="img-responsive" src="/studgogo/public/upload/projectImage/{{ $projects->project_image }}" style="height:100%">
         </a>
     </div>
 
@@ -16,7 +17,7 @@
         <div class="project-page-funding-box font-grey">
 
             <div><br>Project By :</div>
-            <div style="font-size:25px">The Creator</div>
+            <div style="font-size:25px">{{$projects->user_id}}</div>
 
             <div style="padding-top:15px; padding-bottom:15px" >
                 <div style="font-size:20px">
@@ -49,8 +50,8 @@
             </div>
                     
 
-            <div><br>Funding Period: </div>
-                <div align="center">11/11/2017 - 10/01/2018</div>
+            <div ><br>Funding Period: </div>
+                <div align="center" style="padding-bottom:20px;">11/11/2017 - 10/01/2018</div>
             </div>
           
         </div><br><br>

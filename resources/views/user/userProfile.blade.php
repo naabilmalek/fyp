@@ -1,7 +1,6 @@
 @include('inc.header')
 
-@if(count($users) > 0)
-    @foreach($users->all() as $user)
+
 <div class="container">
     <h1 align="center">My Profile </h1>
     
@@ -85,7 +84,5 @@
 
             
  </div>
-    @endforeach
- @endif  
 
 @include('inc.footer')
