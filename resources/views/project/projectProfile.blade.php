@@ -61,7 +61,7 @@
                     @endif 
                     <div class="col-md-3"></div>
                     <div class="col-md-7" align="left">
-                            <p><small>Note: This Email need to verify before you can create the project.</small> </p>
+                            <p><small>Note: This Matric No need to verify before you can create the project.</small> </p>
                     </div>
                     <div class="col-md-3"></div>     
                 </div>

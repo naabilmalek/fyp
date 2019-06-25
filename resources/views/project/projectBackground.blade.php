@@ -166,6 +166,33 @@
     <div class="col-md-8" style="background-color:LightGray;">
         <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
             
+		    <label for="end_date" class="control-label col-lg-3" ><br>Funding Start Date</label>			
+		    <div class="col-lg-9"  style="padding:18px"  > 
+                <input class="control-label col-lg-6" id="start_date" type="text" class="form-control" name="start_date" readonly="readonly" >
+                @if ($errors->has('start_date'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('start_date') }}</strong>
+                                    </span>
+                                @endif
+                <div class="col-lg-2">
+                    <span class="glyphicon glyphicon-calendar " style="padding:4px" name="date"></span></input>
+                </div> 
+            </div>
+            <div class="col-md-3"></div>
+		    <div class="col-md-7" align="left">
+                    <p><small>Note: Describe your project. Make your Funders understand what are they going to fund. Make it as clear as possible</small> </p>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div><br>
+
+<div class="container"  align="center">
+    <div class="col-md-2"></div>
+    <div class="col-md-8" style="background-color:LightGray;">
+        <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
+            
 		    <label for="end_date" class="control-label col-lg-3" ><br>Funding End Date</label>			
 		    <div class="col-lg-9"  style="padding:18px"  > 
                 <input class="control-label col-lg-6" id="end_date" type="text" class="form-control" name="end_date" readonly="readonly" >

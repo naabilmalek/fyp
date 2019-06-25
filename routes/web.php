@@ -11,18 +11,14 @@
 |
 */
 
-Route::get('/', 'ProjectsController@indexH');
 
 Route::get('/home', 'ProjectsController@indexH');
-
-Route::get('/laravel', function () {
-    return redirect()->to('http://127.0.0.1:8080/gg/public/');
-});
+Route::get('/', 'ProjectsController@indexH');
 
 
-Route::get('/openGallery', function () {
-    return view('projectGallery');
-});
+
+
+Route::get('/openGallery', 'ProjectsController@indexp');
 
 Route::get('/index', function () {
     return view('index');
@@ -53,10 +49,13 @@ Route::get('/projectProfile', function () {
     return view('project.projectProfile');
 });
 
+//payment
+
+Route::get('/paymentpage/{id}','PaymentsController@index');
+Route::post('/submitfund/{id}','PaymentsController@store');
 
 //project page view after created
-Route::get('/projectView/{id}','ProjectsController@preview' );
-
+Route::get('/projectView/{id}',['as' => 'campaign_single', 'uses' => 'ProjectsController@preview'] );
 
 
 // user Page route

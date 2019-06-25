@@ -40,6 +40,10 @@
                     $( function() {
                         $( "#end_date" ).datepicker();
                     } );
+
+                    $( function() {
+                        $( "#start_date" ).datepicker();
+                    } );
     </script>
 
     <!-- scripts for comments -->

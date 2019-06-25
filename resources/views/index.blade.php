@@ -34,7 +34,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/')}}">Student</a>
+              <a class="nav-link" href="{{url('/student')}}">Student</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Funder</a>

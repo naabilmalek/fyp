@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Image;
 use App\Project;
 use App\User;
+use App\Payment;
 use Auth;
 
 
@@ -27,24 +28,50 @@ class ProjectsController extends Controller
     
      public function indexH(){
 
-        $projects=Project::all();
+        // $projects=Project::all();
 
-        return view('home')->with('projects', $projects);
+        // return view('home')->with('projects', $projects);
+
+        $project = Project::orderBy('project_name', 'asc')->take(3)->get();
         
+        return view('home',compact('project'));
     }
 
+    public function indexp(){
+
+        // $projects=Project::all();
+
+        // return view('home')->with('projects', $projects);
+
+        $project = Project::orderBy('project_name', 'asc')->take(3)->get();
+        
+        return view('projectGallery',compact('project'));
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function preview($id){
+        
         $projects=Project::find($id);
+        $user_id = Project::where('id', $id)->value('user_id');
+        $users=User::find($user_id);
+        $payment = Payment::where('project_id',$id)->first();
+
         
 
-    	return view('project.projectPreview')->with('projects',$projects);
+    	return view('project.projectPreview',compact('projects','users','payment'));
     }
 
+
+    public function comment(){
+        $campaign = Campaign::find($id);
+        $title = $campaign->title;
+
+        $enable_discuss = get_option('enable_disqus_comment_in_blog');
+        return view('campaign_single', compact('campaign', 'title', 'enable_discuss'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -74,12 +101,16 @@ class ProjectsController extends Controller
         $date=date_create($request->input('end_date'));
         $date_format=date_format($date,"Y/m/d");
 
+        $date1=date_create($request->input('start_date'));
+        $date_format1=date_format($date1,"Y/m/d");
+
         $project = new Project;
     	$project -> project_image = $filename;
         $project -> project_name = $request -> input('project_name');
         $project -> project_URL = $request -> input('project_URL');
     	$project -> website_URL = $request -> input('web_URL');
-    	$project -> project_desc = $request -> input('project_description');
+        $project -> project_desc = $request -> input('project_description');
+        $project -> funding_start = $date_format1;
     	$project -> funding_end_date = $date_format;
         $project -> fund_goal = $request -> input('fund_goal');  
         $project -> video_URL = $request -> input('video_URL'); 
@@ -177,6 +208,8 @@ class ProjectsController extends Controller
             
             $date=date_create($request->input('end_date'));
             $date_format=date_format($date,"Y/m/d");
+            $date1=date_create($request->input('start_date'));
+            $date_format1=date_format($date1,"Y/m/d");
 
 
             $data = array(
@@ -186,6 +219,7 @@ class ProjectsController extends Controller
                 'project_URL' => $request -> input('project_URL'),
                 'website_URL' => $request -> input('web_URL'),
                 'project_desc' => $request -> input('project_description'),
+               'funding_start' => $date_format1,
                 'funding_end_date' => $date_format,
                 'fund_goal' => $request -> input('fund_goal'),  
                 'video_URL' => $request -> input('video_URL'), 
@@ -197,12 +231,15 @@ class ProjectsController extends Controller
         else{
                 $date=date_create($request->input('end_date'));
                 $date_format=date_format($date,"Y/m/d");
+                $date1=date_create($request->input('start_date'));
+                $date_format1=date_format($date1,"Y/m/d");
                 $data = array(
 
                     'project_name' => $request -> input('project_name'),
                     'project_URL' => $request -> input('project_URL'),
                     'website_URL' => $request -> input('web_URL'),
                     'project_desc' => $request -> input('project_description'),
+                    'funding_start' => $date_format1,
                     'funding_end_date' => $date_format,
                     'fund_goal' => $request -> input('fund_goal'),  
                     'video_URL' => $request -> input('video_URL'), 
